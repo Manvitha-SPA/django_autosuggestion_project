@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auto Suggestion Example</title>
+</head>
+<body>
+  <h1>Auto Suggestion Example</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label for="language">Language:</label>
+    <input type="text" id="language" name="language" list="languages" onChange="handleChange">
+    <datalist id="languages">
+      {% for language in languages %}
+        <option value="{{ language }}">{{ language }}</option>
+      {% endfor %}
+    </datalist>
+    <input type="submit" value="Submit" onclick="handleSubmit">
+  </form>
+  <script>
+    function handleSubmit(){
+        console.log("Submitted");
+    }
+    function handleChange(){
+        console.log(event.target.value)
+    }
+  </script>
+</body>
+</html>
